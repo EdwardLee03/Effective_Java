@@ -40,6 +40,18 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
 
+    // ============ Logging（日志记录） ============
+    // Logback - http://logback.qos.ch/
+    // Documentation - http://logback.qos.ch/documentation.html
+    // Reasons to prefer logback over log4j - http://logback.qos.ch/reasonsToSwitch.html
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+
+    // The production code uses the SLF4J logging API at compile time
+    // SLF4J: Simple Logging Facade for Java - http://www.slf4j.org/
+    // User Manual - http://www.slf4j.org/manual.html
+    // Documentation - http://www.slf4j.org/docs.html
+//    compile 'org.slf4j:slf4j-api:1.7.18'
+
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
@@ -58,6 +70,26 @@ dependencies {
     // Mockito - http://site.mockito.org/
     // Mockito API - http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html
 //    testCompile 'org.mockito:mockito-core:1.10.19'
+}
+
+// Test Task (Gradle DSL Reference) - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html
+// adds 'test' task
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+
+    // listen to events in the test execution lifecycle
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+
+    // listen to standard out and standard error of the test JVM(s)
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+    }
 }
 
 // Building Java Projects with Gradle - http://spring.io/guides/gs/gradle/

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="Effective_Java" verbose="1" parallel="methods">
+    <test name="g13">
+        <classes>
+            <class name="c4.g13.EncapsulationTest"/>
+        </classes>
+    </test>
+</suite>
