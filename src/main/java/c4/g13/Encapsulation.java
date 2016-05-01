@@ -19,6 +19,7 @@ import java.util.concurrent.TimeoutException;
  * @see PackagePrivate
  */
 // 公有类都不应该包含公有域
+// 包含公有可变域的类并不是线程安全的
 public class Encapsulation {
 
     // 公有静态 final 域所引用的对象都是不可变的
