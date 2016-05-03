@@ -7,4 +7,12 @@
             <class name="c4.g13.EncapsulationTest"/>
         </classes>
     </test>
+    <test name="g16">
+        <packages>
+            <package name="c4.g16"/>
+        </packages>
+        <!--<classes>-->
+            <!--<class name="c4.g16.InstrumentedHashSetTest"/>-->
+        <!--</classes>-->
+    </test>
 </suite>
